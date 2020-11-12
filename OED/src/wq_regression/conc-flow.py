@@ -34,17 +34,7 @@ def subst(x, str_re, loc):
         x_new = x[:loc[0]] + str_re + x[loc[1]+1:]
 
     return x_new
-
-# Read discharge (Q) and the concentration (C) data
-# Read discharge data
-fnames = os.listdir(fpath)
-childpath = fpath + '/' + fnames[0] + '/'
-fnames = os.listdir(childpath)
-discharge = pd.read_csv(childpath + fnames[0])
-discharge = discharge.drop(index=[0, 1, 2]).drop(index=[30556, 30557]).\
-    filter(items=['Time', '126001A'], axis=1)
-discharge['Time'] = pd.to_datetime(discharge['Time'], format="%H:%M:%S %d/%m/%Y")
-discharge.set_index(['Time'], inplace=True)
+# End subst()
 
 def prep_cq(fnames, index_file, loc, savefile=True):
     """
@@ -59,9 +49,7 @@ def prep_cq(fnames, index_file, loc, savefile=True):
     ------------
     files saved to the given directory.
     """
-    print(index_file)
     cons_names = [fname.split('-')[-1][:-4] for fname in fnames[1:]]
-    print(cons_names)
     concentration = pd.read_csv(childpath + fnames[index_file])
     concentration.rename(columns={concentration.columns[0]: 'Time',
                             concentration.columns[1]: '126001A-' + cons_names[index_file-1] + '(mg/l)'}, inplace=True)
@@ -91,6 +79,19 @@ def prep_cq(fnames, index_file, loc, savefile=True):
 
     if savefile:
         cq.to_csv('../output/cq-' + cons_names[index_file-1] + '.csv', index=False)
+# End prep_cq()
+
+
+# Read discharge (Q) and the concentration (C) data
+# Read discharge data
+fnames = os.listdir(fpath)
+childpath = fpath + '/' + fnames[0] + '/'
+fnames = os.listdir(childpath)
+discharge = pd.read_csv(childpath + fnames[0])
+discharge = discharge.drop(index=[0, 1, 2]).drop(index=[30556, 30557]).\
+    filter(items=['Time', '126001A'], axis=1)
+discharge['Time'] = pd.to_datetime(discharge['Time'], format="%H:%M:%S %d/%m/%Y")
+discharge.set_index(['Time'], inplace=True)
 
 # set the index for 
 loc = [[-2, -1], [-5, -4]]
