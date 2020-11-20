@@ -1,11 +1,16 @@
 ﻿Index,Name,Name_short,Min,Max,Values,Landuse
-0,DeliveryRatioSurface,DRF,0.00 ,100.00 ,25%,Sugarcane
-1,DeliveryRatioSeepage,DRP,0.00 ,100.00 ,0-15%,Sugarcane
-2,DWC,DWC,0.00 ,20.00 ,0-10,Sugarcane
-3,Load Conversion Factor,LCF,0.00 ,2.00 ,0-1.0,Sugarcane
-4,dissConst_DWC,cDWC,0.00 ,5.00 ,0.002-0.306 (mg/L),Cropping
-5,dissConst_EMC,cEMC,0.00 ,10.00 ,0.003 - 0.61 (mg/L),Cropping
-6,dissConst_DWC,gDWC,0.00 ,5.00 ,0.002-0.306 (mg/L),Grazing
-7,dissConst_EMC,gEMC,0.00 ,10.00 ,0.003 - 0.61 (mg/L),Grazing
-8,dissConst_DWC,oDWC,0.00 ,5.00 ,0.002-0.306 (mg/L),Others
-9,dissConst_EMC,oEMC,0.00 ,10.00 ,0.003 - 0.61 (mg/L),Others
+0,DeliveryRatioSurface,DRF,0,100,25%,Sugarcane
+1,DeliveryRatioSeepage,DRP,0,100,0-15%,Sugarcane
+2,DWC,DWC,0,20,0-10,Sugarcane
+3,Load Conversion Factor,LCF,0,2,0-1.0,Sugarcane
+4,dissConst_DWC,gfDWC,0,5,0.002-0.306 (mg/L),Grazing_Forested
+5,dissConst_EMC,gfEMC,0,10,0.003 - 0.61 (mg/L),Grazing_Forested
+6,dissConst_DWC,goDWC,0,5,0.002-0.306 (mg/L),Grazing_Open
+7,dissConst_EMC,goEMC,0,10,0.003 - 0.61 (mg/L),Grazing_Open
+6,dissConst_DWC,cDWC,0,5,0.002-0.306 (mg/L),Conservation
+7,dissConst_EMC,cEMC,0,10,0.003 - 0.61 (mg/L),Conservation
+6,dissConst_DWC,fDWC,0,5,0.002-0.306 (mg/L),Forestry
+7,dissConst_EMC,fEMC,0,10,0.003 - 0.61 (mg/L),Forestry
+8,dissConst_DWC,oDWC,0,5,0.002-0.306 (mg/L),Others
+9,dissConst_EMC,oEMC,0,10,0.003 - 0.61 (mg/L),Others
+ ,,,,,,
