@@ -6,7 +6,6 @@ import numpy as np
 import pandas as pd
 import SALib
 from SALib.sample import latin
-import sobol_seq
 
 datapath = '../../data/'
 parameters = pd.read_csv(datapath + 'Parameters.csv', index_col = 'Index')
