@@ -7,7 +7,7 @@ import pandas as pd
 import os
 import datetime
 # define the repository path
-from common_settings import fpath
+from common_settings import datapath
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -84,8 +84,8 @@ def prep_cq(fnames, index_file, loc, savefile=True):
 
 # Read discharge (Q) and the concentration (C) data
 # Read discharge data
-fnames = os.listdir(fpath)
-childpath = fpath + '/' + fnames[0] + '/'
+fnames = os.listdir(datapath)
+childpath = datapath + '/' + fnames[0] + '/'
 fnames = os.listdir(childpath)
 discharge = pd.read_csv(childpath + fnames[0])
 discharge = discharge.drop(index=[0, 1, 2]).drop(index=[30556, 30557]).\
