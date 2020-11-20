@@ -10,7 +10,7 @@ import spotpy as sp
 first_port=15000
 num_copies = 1
 # define catchment_project and veneer_exe
-project_path = 'D:/cloudStor/Projects/oed_data/pest_source/'
+project_path = './pest_source/'
 catchment_project= project_path + '/MW_BASE_RC10.rsproj'
 
 # Setup Veneer
@@ -25,20 +25,16 @@ processes,ports = start(catchment_project,
                         remote=False,
                         overwrite_plugins=True)
 
-output_file = 'output.txt'
 veneer_port = first_port 
 vs = veneer.Veneer(port=veneer_port)
 
-parameters = pd.read_csv('parameters.csv')
-parameter_dict = {}
-for i,j in parameters.iterrows():
-    scaled_value = (j.upper - j.lower) * j.value/100 + j.lower 
-    parameter_dict[j.parameter] = scaled_value
-    
+parameters = pd.read_csv('parameter_ensemble.csv')
     
 NODEs = ['126001A']
 things_to_record = [{'NetworkElement':node,'RecordingVariable':'Constituents@N_DIN@Downstream Flow Mass'} for node in NODEs]
 vs.configure_recording(disable=[{}], enable=things_to_record)
+
+parameter_dict = parameters.iloc[0]
 
 vs.model.catchment.generation.set_param_values('DeliveryRatioSurface',parameter_dict['DRF'],  fus=['Sugarcane'])
 vs.model.catchment.generation.set_param_values('DeliveryRatioSeepage',parameter_dict['DRP'],  fus=['Sugarcane'])
