@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "F:\\Anaconda\\envs\\oed\\python.exe"
+    "python.pythonPath": "C:\\Users\\qianw\\anaconda3\\envs\\OED\\python.exe",
+    "jupyter.sendSelectionToInteractiveWindow": true
 }

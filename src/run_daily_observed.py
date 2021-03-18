@@ -28,7 +28,7 @@ veneer_path = 'pest_source\\vcmd45\\FlowMatters.Source.VeneerCmd.exe'
 
 
 # Number of instances to open
-num_copies=2     # Important - set this to be a number ~ the number of CPU cores in your system!
+num_copies=4     # Important - set this to be a number ~ the number of CPU cores in your system!
 first_port=15000
 
 #Now, go ahead and start source
@@ -48,8 +48,7 @@ pest_slave_version = 'ipestpp-ies.exe'
 instruction_file = 'output.ins'
 template_file = 'parameters.tpl'
 
-supp_files = ['126001A.pst', '126001A_observations.csv',
-              'observation_ensemble.csv' , 'parameter_ensemble.csv',
+supp_files = ['126001A.pst', 'observation_ensemble.csv' , 'parameter_ensemble.csv',
 			  'run_source.py', 'Plugins.xml']
               
 # parent_dir = os.getcwd()
