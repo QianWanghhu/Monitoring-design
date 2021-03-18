@@ -10,3 +10,5 @@ src/DIN/pest_source/
 output/
 
 src/DIN/pest_source.zip
+
+.vscode/
