@@ -11,7 +11,7 @@ import spotpy as sp
 first_port=15000
 num_copies = 1
 # define catchment_project and veneer_exe
-project_path = 'pest_source/'
+project_path = 'src/DIN/pest_source/'
 catchment_project= project_path + '/MW_BASE_RC10.rsproj'
 
 # Setup Veneer
@@ -40,31 +40,44 @@ criteria = [{'NetworkElement':'gauge_126001A_SandyCkHomebush',
        'RecordingVariable': ele} for ele in variables]
 
 # find links and upstream subcatchments
-param = 'DeliveryRatioSurface'
-intial_values = vs.model.catchment.generation.get_param_values(param, 
-       constituents = 'N_DIN', fus=['Sugarcane'])
-new_value = 25
-vs.model.catchment.generation.set_param_values(param, new_value, 
-       constituents = 'N_DIN', fus=['Sugarcane'])
+param = {'names':['DeliveryRatioSurface', 'DeliveryRatioSeepage', 'DWC', 'dissConst_DWC'],
+              'new_values':[0, 0, 0, 0],
+                     'funs' : [['Sugarcane'], ['Sugarcane'], ['Sugarcane'], 
+                            ['Grazing Open', 'Grazing Forested', 'Conservation', 
+                                   'Forestry', 'Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping']]}
 
-vs.drop_all_runs()
-vs.run_model(params={'NoHardCopyResults':True}, start = start_date, end = end_date) 
+# obtain param initial values
+initial_values = {}
+for p in param['names']:
+       ind = param['names'].index(p)
+       initial_values[p] = vs.model.catchment.generation.get_param_values(p, fus=param['funs'][ind])
 
-column_names = ['DIN_obs_load', 'flow']
-get_din = vs.retrieve_multiple_time_series(criteria=criteria[0])
-get_flow = vs.retrieve_multiple_time_series(criteria=criteria[1])
-# get_din.columns = column_names[0]
-# get_flow.columns = column_names[1]
-din = get_din.loc[pd.Timestamp('2008-07-01'):pd.Timestamp('2018-06-30')]
-flow = get_flow.loc[pd.Timestamp('2008-07-01'):pd.Timestamp('2018-06-30')]
-# store the daily results and the index of sampling
+# change param values and run the model to produce the loads contribution from each source
 load = pd.DataFrame()
-load = pd.concat([load, din, flow], axis=1)
-time_end = time.time()
+for p in param['names']:
+       ind = param['names'].index(p)
+       vs.model.catchment.generation.set_param_values(p, param['new_values'][ind], fus=param['funs'][ind])
+
+       vs.drop_all_runs()
+       vs.run_model(params={'NoHardCopyResults':True}, start = start_date, end = end_date) 
+
+       # column_names = ['DIN_obs_load', 'flow']
+       get_din = vs.retrieve_multiple_time_series(criteria=criteria[0])
+       # get_flow = vs.retrieve_multiple_time_series(criteria=criteria[1])
+       # get_din.columns = column_names[0]
+       # get_flow.columns = column_names[1]
+       din = get_din.loc[pd.Timestamp('2009-07-01'):pd.Timestamp('2018-06-30')]
+       # flow = get_flow.loc[pd.Timestamp('2008-07-01'):pd.Timestamp('2018-06-30')]
+       # store the daily results and the index of sampling
+       din.rename(columns={din.columns[0]: p})
+       load = pd.concat([load, din], axis=1)
+       time_end = time.time()
+
+# set the parameters to initial values
+for p in param['names']:
+       ind = param['names'].index(p)
+       vs.model.catchment.generation.set_param_values(p, initial_values[p], fus=param['funs'][ind], fromList=True)
+
+load.to_csv('data/observation_DRS_sources.csv')
 print(f'{time_end - time_start} seconds')
-load.to_csv('../../data/observation_DRS_test.csv')
-
-vs.model.catchment.generation.set_param_values(param, intial_values, 
-       constituents = 'N_DIN', fus=['Sugarcane'], fromList=True)
-
 print('----------Finished-----------')
