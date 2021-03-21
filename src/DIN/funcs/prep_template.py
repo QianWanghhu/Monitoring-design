@@ -1,6 +1,10 @@
+"""
+Methods used to process and prepare the template files.
+"""
 import pandas as pd
 import numpy as np
 import os
+
 
 def pre_ies_obs_template(load):
     # Prepare the observation into the format for .pst file
@@ -8,7 +12,7 @@ def pre_ies_obs_template(load):
     obgnme = 'DIN'
     obs_index = list(load.index)
     obsnme = generate_obsnme(obs_index, obgnme)
-    obs_pst = pre_observation_pst(obsval, obsnme, obgnme)
+    obs_pst = observation_pst(obsval, obsnme, obgnme)
     # obs_pst.weight.format(f'%:.2E')
     obs_pst.weight = obs_pst.weight.map('{:,.2E}'.format)
     obs_pst.obsval = obs_pst.obsval.map('{:,.3f}'.format)
@@ -58,7 +62,7 @@ def noise_stats(data, noise_level):
     return std_level
 # End noise_stats()
 
-def pre_observation_pst(observation, obsnme, obgnme):
+def observation_pst(observation, obsnme, obgnme):
     """
     Format observartions into the .pst file for PEST++.
     Parameters:
@@ -74,7 +78,7 @@ def pre_observation_pst(observation, obsnme, obgnme):
     obs_pst.index.name = 'obsnme'
 
     return obs_pst
-# pre_observation_pst()
+# observation_pst()
 
 def generate_obsnme(x, obgnme):
     obsnme = pd.to_datetime(x).strftime("%d_%m_%Y")
