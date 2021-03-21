@@ -18,8 +18,8 @@ pest_path= parent_dir + '\\pest_source'
 print('pest path ',pest_path) 
 
 python_path = 'C:\\UserData\\Qian\\anaconda'
-os.environ['PATH'] = os.environ['PATH']+';'+pest_path
-os.environ['PATH'] = os.environ['PATH']+';'+python_path
+os.environ['PATH'] = os.environ['PATH'] + ';' + pest_path
+os.environ['PATH'] = os.environ['PATH'] + ';' + python_path
 print(os.environ['PATH'])  
 
 # Setup Veneer
@@ -39,7 +39,6 @@ processes,ports = start(catchment_project,
                         veneer_exe=veneer_path,
                         remote=False,
                         overwrite_plugins=True)
-
 
 pest_master_version = 'ipestpp-ies.exe'
 pest_slave_version = 'ipestpp-ies.exe'  
