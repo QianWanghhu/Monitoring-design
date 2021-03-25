@@ -1,17 +1,13 @@
 """
-Methods used to process and prepare the template files.
+Help functions used to process and prepare the template files.
 """
 import pandas as pd
 import numpy as np
 import os
 
 
-def pre_ies_obs_template(load):
+def pre_ies_obs_template(obsval, obsnme, obgnme):
     # Prepare the observation into the format for .pst file
-    obsval = add_noise_obs(load, noise_level=0.1)
-    obgnme = 'DIN'
-    obs_index = list(load.index)
-    obsnme = generate_obsnme(obs_index, obgnme)
     obs_pst = observation_pst(obsval, obsnme, obgnme)
     # obs_pst.weight.format(f'%:.2E')
     obs_pst.weight = obs_pst.weight.map('{:,.2E}'.format)
@@ -108,10 +104,11 @@ def add_noise_obs(load, noise_level):
     noised_obs = load.loc[:, column_names].add(noise)
     noised_obs = np.where(noised_obs >= 0, noised_obs, load_min)
     load.loc[:, 'noised'] = noised_obs
-    return noised_obs    
+    return load    
 # End add_noise_obs()
 
-def format_obs_ensemble(obs_ensemble):    
+
+def format_obs_ensemble(obs_ensemble, obgnme):    
     """
     Reformat observation ensemble.
     Parameters:
@@ -122,7 +119,6 @@ def format_obs_ensemble(obs_ensemble):
     ===========
     obs_ensemble: pd.DataFrame, the observation ensemble after new format.
     """
-    obgnme = 'DIN'
     obs_ensemble.index = generate_obsnme(list(obs_ensemble.index), obgnme)
     obs_ensemble = obs_ensemble.T
     obs_ensemble.reset_index(drop=True, inplace=True)
@@ -130,4 +126,23 @@ def format_obs_ensemble(obs_ensemble):
     return obs_ensemble
 # End format_obs_ensemble()
 
+def stat_output(df, summary_scale='annual'):
+    """
+    Calculate the statistics / summarized results according to the user defined criteria. 
+    Parameters:
+    ===========
+    df: pd.DataFrame, timeseries to summarize.
+    summary_scale: str, define the temporal scale of summary
 
+    Returns:
+    ===========
+    summarized_df: pd.DataFrame of the new time step.
+    """
+    assert isinstance(df, pd.DataFrame), 'df should be a dataframe.'
+    assert (summary_scale in (['annual', 'monthly'])), 'summary_scale is not supported.'
+    if summary_scale == 'monthly':
+        summarized_df = df.resample('M').sum()
+    else:
+        summarized_df = df.resample('Y').sum()
+    return summarized_df
+# End stat_output()
