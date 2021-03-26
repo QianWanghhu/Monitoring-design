@@ -6,9 +6,9 @@ import numpy as np
 import os
 
 
-def pre_ies_obs_template(obsval, obsnme, obgnme):
+def pre_ies_obs_template(obsval, obsnme, obgnme, weight):
     # Prepare the observation into the format for .pst file
-    obs_pst = observation_pst(obsval, obsnme, obgnme)
+    obs_pst = observation_pst(obsval, obsnme, obgnme, weight)
     # obs_pst.weight.format(f'%:.2E')
     obs_pst.weight = obs_pst.weight.map('{:,.2E}'.format)
     obs_pst.obsval = obs_pst.obsval.map('{:,.3f}'.format)
@@ -58,7 +58,7 @@ def noise_stats(data, noise_level):
     return std_level
 # End noise_stats()
 
-def observation_pst(observation, obsnme, obgnme):
+def observation_pst(observation, obsnme, obgnme, weight):
     """
     Format observartions into the .pst file for PEST++.
     Parameters:
@@ -69,15 +69,19 @@ def observation_pst(observation, obsnme, obgnme):
     """ 
     obs_pst = pd.DataFrame(data = observation, columns = ['obsval'])
     obs_pst.index = obsnme
-    obs_pst.loc[:, 'weight'] = 1 / obs_pst.shape[0]
+    # obs_pst.loc[:, 'weight'] = 1 / obs_pst.shape[0]
+    obs_pst.loc[:, 'weight'] = weight
     obs_pst.loc[:, 'obgnme'] = obgnme
     obs_pst.index.name = 'obsnme'
 
     return obs_pst
 # observation_pst()
 
-def generate_obsnme(x, obgnme):
-    obsnme = pd.to_datetime(x).strftime("%d_%m_%Y")
+def generate_obsnme(x, obgnme, time_format="%d_%m_%Y"):
+    if isinstance(x, pd.core.indexes.datetimes.DatetimeIndex):
+        obsnme = pd.to_datetime(x).strftime(time_format)
+    else:
+        obsnme = x[:]
     obsnme = [f'{obgnme}_{i}' for i in obsnme]  
 
     return obsnme
