@@ -28,7 +28,7 @@ veneer_path = 'pest_source\\vcmd45\\FlowMatters.Source.VeneerCmd.exe'
 
 
 # Number of instances to open
-num_copies=1     # Important - set this to be a number ~ the number of CPU cores in your system!
+num_copies=4     # Important - set this to be a number ~ the number of CPU cores in your system!
 first_port=15000
 
 #Now, go ahead and start source
@@ -47,9 +47,9 @@ pest_slave_version = 'ipestpp-ies.exe'
 instruction_file = 'output.ins'
 template_file = 'parameters.tpl'
 
-supp_files = ['126001A.pst', 'observation_ensemble.csv' , 'parameter_ensemble.csv',
+supp_files = ['126001A.pst','126001A.csv', 'observation_ensemble_0918.csv' , 'parameter_ensemble.csv',
 			  'run_source.py', 'Plugins.xml']
-              
+            
 # parent_dir = os.getcwd()
 os.makedirs(job_name,exist_ok=True)
 shutil.copyfile(instruction_file, job_name + '/' + instruction_file)
@@ -58,6 +58,9 @@ shutil.copyfile(pst_file, job_name + '/' + pst_file)
 for file in supp_files:
     shutil.copyfile(file, job_name + '/' + file)
 
+model_func_file = 'modeling_funcs.py'
+shutil.copyfile('funcs/' + model_func_file, job_name + '/' + model_func_file)
+
 os.chdir(job_name)
 for port in ports :
     dir_name = 'Slave_' + str(port)
@@ -65,11 +68,13 @@ for port in ports :
     shutil.copyfile(instruction_file, dir_name + '/' + instruction_file)
     shutil.copyfile(template_file, dir_name + '/' + template_file)
     shutil.copyfile(pst_file, dir_name + '/' + pst_file)
+    shutil.copyfile(model_func_file, dir_name + '/' + model_func_file)
     for file in supp_files:
         shutil.copyfile(file, dir_name + '/' + file)
     veneer_connection = dir_name + '/veneer_connection.txt'
     with open(veneer_connection, 'w') as f:
         f.write(str(port))
+
 os.chdir(parent_dir)
 
 
