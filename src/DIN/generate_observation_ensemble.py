@@ -35,7 +35,7 @@ def run_obs_ensemble(vs, criteria, start_date, end_date, parameters,
         print(f'{obs_ensemble_name}.csv exists.')
 
 first_port=15000
-num_copies = 1
+num_copies = 8
 # define catchment_project and veneer_exe
 project_path = 'pest_source/'
 # project_path = 'pest_source/'
@@ -58,22 +58,25 @@ vs_list = vs_settings(ports, things_to_record)
 
 # generate parameter emsenble
 datapath = '../../data/'
-nsample = 512
-param_ensemble = 'parameter_ensemble_test.csv'
-generate_parameter_ensemble(nsample, param_ensemble, datapath, seed=88)
+# nsample = 512
+# param_ensemble = 'parameter_ensemble_test.csv'
+# generate_parameter_ensemble(nsample, param_ensemble, datapath, seed=88)
 
 # obtain the initial values of parameter 
 initial_values = obtain_initials(vs_list[0])
 
 # run to generate observation with default parameter values in the model
-obs_name = 'observation_test'
-retrieve_time = [pd.Timestamp('2015-07-01'), pd.Timestamp('2016-06-30')]
+print('------------------Generate observation with default parameter values-----------------')
+obs_name = 'observation_0918'
+retrieve_time = [pd.Timestamp('2009-07-01'), pd.Timestamp('2018-06-30')]
+# end_date = '30/06/2018'
 run_default_obs(vs_list[0], criteria, start_date, end_date, 
     obs_name, retrieve_time, datapath)
 
 # run to generate observation ensemble with parameter ensemble
-obs_ensemble_name = 'din_daily_test'   
-parameters = pd.read_csv('parameter_ensemble_test.csv', index_col='real_name')[0:2] #OED/src/DIN/
+print('------------------Generate observation ensemble-----------------')
+obs_ensemble_name = 'din_daily_0918'   
+parameters = pd.read_csv('parameter_ensemble.csv', index_col='real_name')#[0:8] #OED/src/DIN/
 run_obs_ensemble(vs_list, criteria, start_date, end_date, parameters, 
     obs_ensemble_name, retrieve_time, datapath)
 
