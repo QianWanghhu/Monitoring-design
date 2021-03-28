@@ -10,7 +10,7 @@ import time
 import os
 import spotpy as sp
 
-from funcs.modeling_funcs import change_param_values, modeling_settings
+from modeling_funcs import change_param_values, modeling_settings
 
 output_file = 'output.txt'
 veneer_port = find_port() 
@@ -41,8 +41,8 @@ def timeseries_sum(df, temp_scale = 'annual'):
 
 # import observation if the output.txt requires the use of obs.
 # Here the observation can be monitoring data or synthetic data.
-date_range = pd.to_datetime(['2009/07/01', '2016/06/30'])
-observed_din = pd.read_csv('low_interp_flow.csv', index_col='Date')
+date_range = pd.to_datetime(['2009/07/01', '2018/06/30'])
+observed_din = pd.read_csv('126001A.csv', index_col='Date')
 observed_din.index = pd.to_datetime(observed_din.index)
 observed_din = observed_din.loc[date_range[0]:date_range[1], :].filter(items=[observed_din.columns[0]]).apply(lambda x: 1000 * x)
 
