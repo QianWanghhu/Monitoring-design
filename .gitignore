@@ -14,3 +14,5 @@ src/DIN/pest_source.zip
 .vscode/
 
 src/DIN/funcs/__pycache__/
+
+src/postprocess/.ipynb_checkpoints/
