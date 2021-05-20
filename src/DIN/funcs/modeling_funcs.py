@@ -3,12 +3,9 @@ import pandas as pd
 import numpy as np
 import veneer
 from veneer.pest_runtime import *
-from veneer.manage import start,kill_all_now
 import time
 import os
-import spotpy as sp
 # Import packages
-import SALib
 from SALib.sample import latin
 
 def modeling_settings():
@@ -163,26 +160,43 @@ def generate_parameter_ensemble(nsample, param_ensemble, datapath, seed=None):
     else:
         print(f'The file of parameter ensemble exists under the folder')
 
-def change_param_values(v, pvalue_dict, fromList=False):
+def change_param_values(v, pvalue_dict, fromList=False, subcatment=None):
     assert isinstance(v, veneer.general.Veneer),"vs has to be an veneer object."
-    v.model.catchment.generation.set_param_values('DeliveryRatioSurface',pvalue_dict['DRF'],  fus=['Sugarcane'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('DeliveryRatioSeepage',pvalue_dict['DRP'],  fus=['Sugarcane'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('DWC', pvalue_dict['DWC'], fus=['Sugarcane'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('Load_Conversion_Factor', pvalue_dict['LCF'], fus=['Sugarcane'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['gfDWC'], fus=['Grazing Forested'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['gfEMC'], fus=['Grazing Forested'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['goDWC'], fus=['Grazing Open'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['goEMC'], fus=['Grazing Open'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['cDWC'], fus=['Conservation'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['cEMC'], fus=['Conservation'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['fDWC'], fus=['Forestry'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['fEMC'], fus=['Forestry'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['oDWC'], fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'], fromList=fromList)
-    v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['oEMC'], fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'], fromList=fromList)
+    if subcatment is None:
+        v.model.catchment.generation.set_param_values('DeliveryRatioSurface',pvalue_dict['DRF'],  fus=['Sugarcane'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('DeliveryRatioSeepage',pvalue_dict['DRP'],  fus=['Sugarcane'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('DWC', pvalue_dict['DWC'], fus=['Sugarcane'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('Load_Conversion_Factor', pvalue_dict['LCF'], fus=['Sugarcane'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['gfDWC'], fus=['Grazing Forested'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['gfEMC'], fus=['Grazing Forested'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['goDWC'], fus=['Grazing Open'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['goEMC'], fus=['Grazing Open'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['cDWC'], fus=['Conservation'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['cEMC'], fus=['Conservation'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['fDWC'], fus=['Forestry'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['fEMC'], fus=['Forestry'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict['oDWC'], fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'], fromList=fromList)
+        v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict['oEMC'], fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'], fromList=fromList)
+    else:
+        for subcat in subcatment:
+            v.model.catchment.generation.set_param_values('DeliveryRatioSurface',pvalue_dict[f'DRF{subcat}'],  fus=['Sugarcane'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('DeliveryRatioSeepage',pvalue_dict[f'DRP{subcat}'],  fus=['Sugarcane'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('DWC', pvalue_dict[f'DWC{subcat}'], fus=['Sugarcane'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('Load_Conversion_Factor', pvalue_dict[f'LCF{subcat}'], fus=['Sugarcane'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict[f'gfDWC{subcat}'], fus=['Grazing Forested'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict[f'gfEMC{subcat}'], fus=['Grazing Forested'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict[f'goDWC{subcat}'], fus=['Grazing Open'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict[f'goEMC{subcat}'], fus=['Grazing Open'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict[f'cDWC{subcat}'], fus=['Conservation'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict[f'cEMC{subcat}'], fus=['Conservation'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict[f'fDWC{subcat}'], fus=['Forestry'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict[f'fEMC{subcat}'], fus=['Forestry'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_DWC', pvalue_dict[f'oDWC{subcat}'], fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'], catchments=f'SC #{subcat}', fromList=fromList)
+            v.model.catchment.generation.set_param_values('dissConst_EMC', pvalue_dict[f'oEMC{subcat}'], fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'], catchments=f'SC #{subcat}', fromList=fromList)
     return v
 
 # obtain initial values
-def obtain_initials(v):
+def obtain_initials(v, subcatchment=None):
     """Obtain the initial values of the model.
     Parameters:
     ===========
@@ -195,21 +209,38 @@ def obtain_initials(v):
     assert isinstance(v, veneer.general.Veneer),"vs has to be an veneer object."
 
     initial_values = {}
-    initial_values['DRF'] = v.model.catchment.generation.get_param_values('DeliveryRatioSurface', fus=['Sugarcane'])
-    initial_values['DRP'] = v.model.catchment.generation.get_param_values('DeliveryRatioSeepage',  fus=['Sugarcane'])
-    initial_values['DWC'] = v.model.catchment.generation.get_param_values('DWC', fus=['Sugarcane'])
-    initial_values['LCF'] = v.model.catchment.generation.get_param_values('Load_Conversion_Factor', fus=['Sugarcane'])
-    initial_values['gfDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Grazing Forested'])
-    initial_values['gfEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Grazing Forested'])
-    initial_values['goDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Grazing Open'])
-    initial_values['goEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Grazing Open'])
-    initial_values['cDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Conservation'])
-    initial_values['cEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Conservation'])
-    initial_values['fDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Forestry'])
-    initial_values['fEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Forestry'])
-    initial_values['oDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'])
-    initial_values['oEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'])
-    
+    if subcatchment is None:
+        initial_values['DRF'] = v.model.catchment.generation.get_param_values('DeliveryRatioSurface', fus=['Sugarcane'])
+        initial_values['DRP'] = v.model.catchment.generation.get_param_values('DeliveryRatioSeepage',  fus=['Sugarcane'])
+        initial_values['DWC'] = v.model.catchment.generation.get_param_values('DWC', fus=['Sugarcane'])
+        initial_values['LCF'] = v.model.catchment.generation.get_param_values('Load_Conversion_Factor', fus=['Sugarcane'])
+        initial_values['gfDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Grazing Forested'])
+        initial_values['gfEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Grazing Forested'])
+        initial_values['goDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Grazing Open'])
+        initial_values['goEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Grazing Open'])
+        initial_values['cDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Conservation'])
+        initial_values['cEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Conservation'])
+        initial_values['fDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Forestry'])
+        initial_values['fEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Forestry'])
+        initial_values['oDWC'] = v.model.catchment.generation.get_param_values('dissConst_DWC', fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'])
+        initial_values['oEMC'] = v.model.catchment.generation.get_param_values('dissConst_EMC', fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'])
+    else:
+        for subcat in subcatchment:
+            initial_values[f'DRF{subcat}'] = v.model.catchment.generation.get_param_values('DeliveryRatioSurface', catchments=f'SC #{subcat}', fus=['Sugarcane'])
+            initial_values[f'DRP{subcat}'] = v.model.catchment.generation.get_param_values('DeliveryRatioSeepage', catchments=f'SC #{subcat}', fus=['Sugarcane'])
+            initial_values[f'DWC{subcat}'] = v.model.catchment.generation.get_param_values('DWC', catchments=f'SC #{subcat}', fus=['Sugarcane'])
+            initial_values[f'LCF{subcat}'] = v.model.catchment.generation.get_param_values('Load_Conversion_Factor', catchments=f'SC #{subcat}', fus=['Sugarcane'])
+            initial_values[f'gfDWC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_DWC', catchments=f'SC #{subcat}', fus=['Grazing Forested'])
+            initial_values[f'gfEMC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_EMC', catchments=f'SC #{subcat}', fus=['Grazing Forested'])
+            initial_values[f'goDWC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_DWC', catchments=f'SC #{subcat}', fus=['Grazing Open'])
+            initial_values[f'goEMC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_EMC', catchments=f'SC #{subcat}', fus=['Grazing Open'])
+            initial_values[f'cDWC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_DWC', catchments=f'SC #{subcat}', fus=['Conservation'])
+            initial_values[f'cEMC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_EMC', catchments=f'SC #{subcat}', fus=['Conservation'])
+            initial_values[f'fDWC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_DWC', catchments=f'SC #{subcat}', fus=['Forestry'])
+            initial_values[f'fEMC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_EMC', catchments=f'SC #{subcat}', fus=['Forestry'])
+            initial_values[f'oDWC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_DWC', catchments=f'SC #{subcat}', fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'])
+            initial_values[f'oEMC{subcat}'] = v.model.catchment.generation.get_param_values('dissConst_EMC', catchments=f'SC #{subcat}', fus=['Horticulture', 'Urban', 'Water', 'Other', 'Irrigated Cropping'])
+
     return initial_values
 
 def vs_settings(ports, things_to_record):

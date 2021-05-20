@@ -1,7 +1,7 @@
 pcf
 * control data
 restart estimation
-      14    10      1       0       1    
+      196    10      1       0       1    
 1 1 single point
 10.0 -2.0 0.3 0.01 10
 10.0 10.0 0.001
@@ -10,25 +10,207 @@ restart estimation
 0 0 0
 * singular value decomposition
 1
-14 5e-07
+182 5e-07
 0
 * parameter groups
 all_params relative 0.015 0.000 switch 2.0 parabolic
 * parameter data
-DRF	log     factor	50	0.00001	100	all_params	1	0
-DRP	log     factor	40	0.00001	100	all_params	1	0
-DWC	log     factor	50	0.00001	100	all_params	1	0
-LCF	log     factor	50	0.00001	100	all_params	1	0
-gfDWC	log     factor	50	0.00001	100	all_params	1	0
-gfEMC	log     factor	50	0.00001	100	all_params	1	0
-goDWC	log     factor	50	0.00001	100	all_params	1	0
-goEMC	log     factor	50	0.00001	100	all_params	1	0
-cDWC	log     factor	50	0.00001	100	all_params	1	0
-cEMC	log     factor	50	0.00001	100	all_params	1	0
-fDWC	log     factor	50	0.00001	100	all_params	1	0
-fEMC	log     factor	50	0.00001	100	all_params	1	0
-oDWC	log     factor	50	0.00001	100	all_params	1	0
-oEMC	log     factor	50	0.00001	100	all_params	1	0
+DRF114	log     factor	50	0.00001	100	all_params	1	0
+DRP114	log     factor	40	0.00001	100	all_params	1	0
+DWC114	log     factor	50	0.00001	100	all_params	1	0
+LCF114	log     factor	50	0.00001	100	all_params	1	0
+gfDWC114	log     factor	50	0.00001	100	all_params	1	0
+gfEMC114	log     factor	50	0.00001	100	all_params	1	0
+goDWC114	log     factor	50	0.00001	100	all_params	1	0
+goEMC114	log     factor	50	0.00001	100	all_params	1	0
+cDWC114	log     factor	50	0.00001	100	all_params	1	0
+cEMC114	log     factor	50	0.00001	100	all_params	1	0
+fDWC114	log     factor	50	0.00001	100	all_params	1	0
+fEMC114	log     factor	50	0.00001	100	all_params	1	0
+oDWC114	log     factor	50	0.00001	100	all_params	1	0
+oEMC114	log     factor	50	0.00001	100	all_params	1	0
+DRF106	log     factor	50	0.00001	100	all_params	1	0
+DRP106	log     factor	40	0.00001	100	all_params	1	0
+DWC106	log     factor	50	0.00001	100	all_params	1	0
+LCF106	log     factor	50	0.00001	100	all_params	1	0
+gfDWC106	log     factor	50	0.00001	100	all_params	1	0
+gfEMC106	log     factor	50	0.00001	100	all_params	1	0
+goDWC106	log     factor	50	0.00001	100	all_params	1	0
+goEMC106	log     factor	50	0.00001	100	all_params	1	0
+cDWC106	log     factor	50	0.00001	100	all_params	1	0
+cEMC106	log     factor	50	0.00001	100	all_params	1	0
+fDWC106	log     factor	50	0.00001	100	all_params	1	0
+fEMC106	log     factor	50	0.00001	100	all_params	1	0
+oDWC106	log     factor	50	0.00001	100	all_params	1	0
+oEMC106	log     factor	50	0.00001	100	all_params	1	0
+DRF113	log     factor	50	0.00001	100	all_params	1	0
+DRP113	log     factor	40	0.00001	100	all_params	1	0
+DWC113	log     factor	50	0.00001	100	all_params	1	0
+LCF113	log     factor	50	0.00001	100	all_params	1	0
+gfDWC113	log     factor	50	0.00001	100	all_params	1	0
+gfEMC113	log     factor	50	0.00001	100	all_params	1	0
+goDWC113	log     factor	50	0.00001	100	all_params	1	0
+goEMC113	log     factor	50	0.00001	100	all_params	1	0
+cDWC113	log     factor	50	0.00001	100	all_params	1	0
+cEMC113	log     factor	50	0.00001	100	all_params	1	0
+fDWC113	log     factor	50	0.00001	100	all_params	1	0
+fEMC113	log     factor	50	0.00001	100	all_params	1	0
+oDWC113	log     factor	50	0.00001	100	all_params	1	0
+oEMC113	log     factor	50	0.00001	100	all_params	1	0
+DRF107	log     factor	50	0.00001	100	all_params	1	0
+DRP107	log     factor	40	0.00001	100	all_params	1	0
+DWC107	log     factor	50	0.00001	100	all_params	1	0
+LCF107	log     factor	50	0.00001	100	all_params	1	0
+gfDWC107	log     factor	50	0.00001	100	all_params	1	0
+gfEMC107	log     factor	50	0.00001	100	all_params	1	0
+goDWC107	log     factor	50	0.00001	100	all_params	1	0
+goEMC107	log     factor	50	0.00001	100	all_params	1	0
+cDWC107	log     factor	50	0.00001	100	all_params	1	0
+cEMC107	log     factor	50	0.00001	100	all_params	1	0
+fDWC107	log     factor	50	0.00001	100	all_params	1	0
+fEMC107	log     factor	50	0.00001	100	all_params	1	0
+oDWC107	log     factor	50	0.00001	100	all_params	1	0
+oEMC107	log     factor	50	0.00001	100	all_params	1	0
+DRF112	log     factor	50	0.00001	100	all_params	1	0
+DRP112	log     factor	40	0.00001	100	all_params	1	0
+DWC112	log     factor	50	0.00001	100	all_params	1	0
+LCF112	log     factor	50	0.00001	100	all_params	1	0
+gfDWC112	log     factor	50	0.00001	100	all_params	1	0
+gfEMC112	log     factor	50	0.00001	100	all_params	1	0
+goDWC112	log     factor	50	0.00001	100	all_params	1	0
+goEMC112	log     factor	50	0.00001	100	all_params	1	0
+cDWC112	log     factor	50	0.00001	100	all_params	1	0
+cEMC112	log     factor	50	0.00001	100	all_params	1	0
+fDWC112	log     factor	50	0.00001	100	all_params	1	0
+fEMC112	log     factor	50	0.00001	100	all_params	1	0
+oDWC112	log     factor	50	0.00001	100	all_params	1	0
+oEMC112	log     factor	50	0.00001	100	all_params	1	0
+DRF108	log     factor	50	0.00001	100	all_params	1	0
+DRP108	log     factor	40	0.00001	100	all_params	1	0
+DWC108	log     factor	50	0.00001	100	all_params	1	0
+LCF108	log     factor	50	0.00001	100	all_params	1	0
+gfDWC108	log     factor	50	0.00001	100	all_params	1	0
+gfEMC108	log     factor	50	0.00001	100	all_params	1	0
+goDWC108	log     factor	50	0.00001	100	all_params	1	0
+goEMC108	log     factor	50	0.00001	100	all_params	1	0
+cDWC108	log     factor	50	0.00001	100	all_params	1	0
+cEMC108	log     factor	50	0.00001	100	all_params	1	0
+fDWC108	log     factor	50	0.00001	100	all_params	1	0
+fEMC108	log     factor	50	0.00001	100	all_params	1	0
+oDWC108	log     factor	50	0.00001	100	all_params	1	0
+oEMC108	log     factor	50	0.00001	100	all_params	1	0
+DRF109	log     factor	50	0.00001	100	all_params	1	0
+DRP109	log     factor	40	0.00001	100	all_params	1	0
+DWC109	log     factor	50	0.00001	100	all_params	1	0
+LCF109	log     factor	50	0.00001	100	all_params	1	0
+gfDWC109	log     factor	50	0.00001	100	all_params	1	0
+gfEMC109	log     factor	50	0.00001	100	all_params	1	0
+goDWC109	log     factor	50	0.00001	100	all_params	1	0
+goEMC109	log     factor	50	0.00001	100	all_params	1	0
+cDWC109	log     factor	50	0.00001	100	all_params	1	0
+cEMC109	log     factor	50	0.00001	100	all_params	1	0
+fDWC109	log     factor	50	0.00001	100	all_params	1	0
+fEMC109	log     factor	50	0.00001	100	all_params	1	0
+oDWC109	log     factor	50	0.00001	100	all_params	1	0
+oEMC109	log     factor	50	0.00001	100	all_params	1	0
+DRF157	log     factor	50	0.00001	100	all_params	1	0
+DRP157	log     factor	40	0.00001	100	all_params	1	0
+DWC157	log     factor	50	0.00001	100	all_params	1	0
+LCF157	log     factor	50	0.00001	100	all_params	1	0
+gfDWC157	log     factor	50	0.00001	100	all_params	1	0
+gfEMC157	log     factor	50	0.00001	100	all_params	1	0
+goDWC157	log     factor	50	0.00001	100	all_params	1	0
+goEMC157	log     factor	50	0.00001	100	all_params	1	0
+cDWC157	log     factor	50	0.00001	100	all_params	1	0
+cEMC157	log     factor	50	0.00001	100	all_params	1	0
+fDWC157	log     factor	50	0.00001	100	all_params	1	0
+fEMC157	log     factor	50	0.00001	100	all_params	1	0
+oDWC157	log     factor	50	0.00001	100	all_params	1	0
+oEMC157	log     factor	50	0.00001	100	all_params	1	0
+DRF110	log     factor	50	0.00001	100	all_params	1	0
+DRP110	log     factor	40	0.00001	100	all_params	1	0
+DWC110	log     factor	50	0.00001	100	all_params	1	0
+LCF110	log     factor	50	0.00001	100	all_params	1	0
+gfDWC110	log     factor	50	0.00001	100	all_params	1	0
+gfEMC110	log     factor	50	0.00001	100	all_params	1	0
+goDWC110	log     factor	50	0.00001	100	all_params	1	0
+goEMC110	log     factor	50	0.00001	100	all_params	1	0
+cDWC110	log     factor	50	0.00001	100	all_params	1	0
+cEMC110	log     factor	50	0.00001	100	all_params	1	0
+fDWC110	log     factor	50	0.00001	100	all_params	1	0
+fEMC110	log     factor	50	0.00001	100	all_params	1	0
+oDWC110	log     factor	50	0.00001	100	all_params	1	0
+oEMC110	log     factor	50	0.00001	100	all_params	1	0
+DRF111	log     factor	50	0.00001	100	all_params	1	0
+DRP111	log     factor	40	0.00001	100	all_params	1	0
+DWC111	log     factor	50	0.00001	100	all_params	1	0
+LCF111	log     factor	50	0.00001	100	all_params	1	0
+gfDWC111	log     factor	50	0.00001	100	all_params	1	0
+gfEMC111	log     factor	50	0.00001	100	all_params	1	0
+goDWC111	log     factor	50	0.00001	100	all_params	1	0
+goEMC111	log     factor	50	0.00001	100	all_params	1	0
+cDWC111	log     factor	50	0.00001	100	all_params	1	0
+cEMC111	log     factor	50	0.00001	100	all_params	1	0
+fDWC111	log     factor	50	0.00001	100	all_params	1	0
+fEMC111	log     factor	50	0.00001	100	all_params	1	0
+oDWC111	log     factor	50	0.00001	100	all_params	1	0
+oEMC111	log     factor	50	0.00001	100	all_params	1	0
+DRF105	log     factor	50	0.00001	100	all_params	1	0
+DRP105	log     factor	40	0.00001	100	all_params	1	0
+DWC105	log     factor	50	0.00001	100	all_params	1	0
+LCF105	log     factor	50	0.00001	100	all_params	1	0
+gfDWC105	log     factor	50	0.00001	100	all_params	1	0
+gfEMC105	log     factor	50	0.00001	100	all_params	1	0
+goDWC105	log     factor	50	0.00001	100	all_params	1	0
+goEMC105	log     factor	50	0.00001	100	all_params	1	0
+cDWC105	log     factor	50	0.00001	100	all_params	1	0
+cEMC105	log     factor	50	0.00001	100	all_params	1	0
+fDWC105	log     factor	50	0.00001	100	all_params	1	0
+fEMC105	log     factor	50	0.00001	100	all_params	1	0
+oDWC105	log     factor	50	0.00001	100	all_params	1	0
+oEMC105	log     factor	50	0.00001	100	all_params	1	0
+DRF161	log     factor	50	0.00001	100	all_params	1	0
+DRP161	log     factor	40	0.00001	100	all_params	1	0
+DWC161	log     factor	50	0.00001	100	all_params	1	0
+LCF161	log     factor	50	0.00001	100	all_params	1	0
+gfDWC161	log     factor	50	0.00001	100	all_params	1	0
+gfEMC161	log     factor	50	0.00001	100	all_params	1	0
+goDWC161	log     factor	50	0.00001	100	all_params	1	0
+goEMC161	log     factor	50	0.00001	100	all_params	1	0
+cDWC161	log     factor	50	0.00001	100	all_params	1	0
+cEMC161	log     factor	50	0.00001	100	all_params	1	0
+fDWC161	log     factor	50	0.00001	100	all_params	1	0
+fEMC161	log     factor	50	0.00001	100	all_params	1	0
+oDWC161	log     factor	50	0.00001	100	all_params	1	0
+oEMC161	log     factor	50	0.00001	100	all_params	1	0
+DRF104	log     factor	50	0.00001	100	all_params	1	0
+DRP104	log     factor	40	0.00001	100	all_params	1	0
+DWC104	log     factor	50	0.00001	100	all_params	1	0
+LCF104	log     factor	50	0.00001	100	all_params	1	0
+gfDWC104	log     factor	50	0.00001	100	all_params	1	0
+gfEMC104	log     factor	50	0.00001	100	all_params	1	0
+goDWC104	log     factor	50	0.00001	100	all_params	1	0
+goEMC104	log     factor	50	0.00001	100	all_params	1	0
+cDWC104	log     factor	50	0.00001	100	all_params	1	0
+cEMC104	log     factor	50	0.00001	100	all_params	1	0
+fDWC104	log     factor	50	0.00001	100	all_params	1	0
+fEMC104	log     factor	50	0.00001	100	all_params	1	0
+oDWC104	log     factor	50	0.00001	100	all_params	1	0
+oEMC104	log     factor	50	0.00001	100	all_params	1	0
+DRF103	log     factor	50	0.00001	100	all_params	1	0
+DRP103	log     factor	40	0.00001	100	all_params	1	0
+DWC103	log     factor	50	0.00001	100	all_params	1	0
+LCF103	log     factor	50	0.00001	100	all_params	1	0
+gfDWC103	log     factor	50	0.00001	100	all_params	1	0
+gfEMC103	log     factor	50	0.00001	100	all_params	1	0
+goDWC103	log     factor	50	0.00001	100	all_params	1	0
+goEMC103	log     factor	50	0.00001	100	all_params	1	0
+cDWC103	log     factor	50	0.00001	100	all_params	1	0
+cEMC103	log     factor	50	0.00001	100	all_params	1	0
+fDWC103	log     factor	50	0.00001	100	all_params	1	0
+fEMC103	log     factor	50	0.00001	100	all_params	1	0
+oDWC103	log     factor	50	0.00001	100	all_params	1	0
+oEMC103	log     factor	50	0.00001	100	all_params	1	0
 * observation groups
 p_bias
 DIN 
@@ -50,9 +232,7 @@ parameters.tpl parameters.csv
 output.ins output.txt
 ++ies_num_reals(40)
 ++overdue_giveup_minutes(20.0)
-++ies_observation_ensemble('observation_ensemble_0918.csv')
 ++ies_add_base(true)
-++ies_parameter_ensemble('parameter_ensemble.csv')
 ++ies_lambda_mults(0.1,1.0,10) 
 ++lambda_scale_fac(0.75, 0.925, 1.1 )
 ++ies_subset_size(5)      
