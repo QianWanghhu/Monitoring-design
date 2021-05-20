@@ -18,7 +18,7 @@ all_params relative 0.015 0.000 switch 2.0 parabolic
 DRF114	log     factor	50	0.00001	100	all_params	1	0
 DRP114	log     factor	40	0.00001	100	all_params	1	0
 DWC114	log     factor	50	0.00001	100	all_params	1	0
-LCF114	log     factor	50	0.00001	100	all_params	1	0
+LCF114	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC114	log     factor	50	0.00001	100	all_params	1	0
 gfEMC114	log     factor	50	0.00001	100	all_params	1	0
 goDWC114	log     factor	50	0.00001	100	all_params	1	0
@@ -32,7 +32,7 @@ oEMC114	log     factor	50	0.00001	100	all_params	1	0
 DRF106	log     factor	50	0.00001	100	all_params	1	0
 DRP106	log     factor	40	0.00001	100	all_params	1	0
 DWC106	log     factor	50	0.00001	100	all_params	1	0
-LCF106	log     factor	50	0.00001	100	all_params	1	0
+LCF106	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC106	log     factor	50	0.00001	100	all_params	1	0
 gfEMC106	log     factor	50	0.00001	100	all_params	1	0
 goDWC106	log     factor	50	0.00001	100	all_params	1	0
@@ -46,7 +46,7 @@ oEMC106	log     factor	50	0.00001	100	all_params	1	0
 DRF113	log     factor	50	0.00001	100	all_params	1	0
 DRP113	log     factor	40	0.00001	100	all_params	1	0
 DWC113	log     factor	50	0.00001	100	all_params	1	0
-LCF113	log     factor	50	0.00001	100	all_params	1	0
+LCF113	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC113	log     factor	50	0.00001	100	all_params	1	0
 gfEMC113	log     factor	50	0.00001	100	all_params	1	0
 goDWC113	log     factor	50	0.00001	100	all_params	1	0
@@ -60,7 +60,7 @@ oEMC113	log     factor	50	0.00001	100	all_params	1	0
 DRF107	log     factor	50	0.00001	100	all_params	1	0
 DRP107	log     factor	40	0.00001	100	all_params	1	0
 DWC107	log     factor	50	0.00001	100	all_params	1	0
-LCF107	log     factor	50	0.00001	100	all_params	1	0
+LCF107	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC107	log     factor	50	0.00001	100	all_params	1	0
 gfEMC107	log     factor	50	0.00001	100	all_params	1	0
 goDWC107	log     factor	50	0.00001	100	all_params	1	0
@@ -74,7 +74,7 @@ oEMC107	log     factor	50	0.00001	100	all_params	1	0
 DRF112	log     factor	50	0.00001	100	all_params	1	0
 DRP112	log     factor	40	0.00001	100	all_params	1	0
 DWC112	log     factor	50	0.00001	100	all_params	1	0
-LCF112	log     factor	50	0.00001	100	all_params	1	0
+LCF112	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC112	log     factor	50	0.00001	100	all_params	1	0
 gfEMC112	log     factor	50	0.00001	100	all_params	1	0
 goDWC112	log     factor	50	0.00001	100	all_params	1	0
@@ -88,7 +88,7 @@ oEMC112	log     factor	50	0.00001	100	all_params	1	0
 DRF108	log     factor	50	0.00001	100	all_params	1	0
 DRP108	log     factor	40	0.00001	100	all_params	1	0
 DWC108	log     factor	50	0.00001	100	all_params	1	0
-LCF108	log     factor	50	0.00001	100	all_params	1	0
+LCF108	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC108	log     factor	50	0.00001	100	all_params	1	0
 gfEMC108	log     factor	50	0.00001	100	all_params	1	0
 goDWC108	log     factor	50	0.00001	100	all_params	1	0
@@ -102,7 +102,7 @@ oEMC108	log     factor	50	0.00001	100	all_params	1	0
 DRF109	log     factor	50	0.00001	100	all_params	1	0
 DRP109	log     factor	40	0.00001	100	all_params	1	0
 DWC109	log     factor	50	0.00001	100	all_params	1	0
-LCF109	log     factor	50	0.00001	100	all_params	1	0
+LCF109	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC109	log     factor	50	0.00001	100	all_params	1	0
 gfEMC109	log     factor	50	0.00001	100	all_params	1	0
 goDWC109	log     factor	50	0.00001	100	all_params	1	0
@@ -116,7 +116,7 @@ oEMC109	log     factor	50	0.00001	100	all_params	1	0
 DRF157	log     factor	50	0.00001	100	all_params	1	0
 DRP157	log     factor	40	0.00001	100	all_params	1	0
 DWC157	log     factor	50	0.00001	100	all_params	1	0
-LCF157	log     factor	50	0.00001	100	all_params	1	0
+LCF157	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC157	log     factor	50	0.00001	100	all_params	1	0
 gfEMC157	log     factor	50	0.00001	100	all_params	1	0
 goDWC157	log     factor	50	0.00001	100	all_params	1	0
@@ -130,7 +130,7 @@ oEMC157	log     factor	50	0.00001	100	all_params	1	0
 DRF110	log     factor	50	0.00001	100	all_params	1	0
 DRP110	log     factor	40	0.00001	100	all_params	1	0
 DWC110	log     factor	50	0.00001	100	all_params	1	0
-LCF110	log     factor	50	0.00001	100	all_params	1	0
+LCF110	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC110	log     factor	50	0.00001	100	all_params	1	0
 gfEMC110	log     factor	50	0.00001	100	all_params	1	0
 goDWC110	log     factor	50	0.00001	100	all_params	1	0
@@ -144,7 +144,7 @@ oEMC110	log     factor	50	0.00001	100	all_params	1	0
 DRF111	log     factor	50	0.00001	100	all_params	1	0
 DRP111	log     factor	40	0.00001	100	all_params	1	0
 DWC111	log     factor	50	0.00001	100	all_params	1	0
-LCF111	log     factor	50	0.00001	100	all_params	1	0
+LCF111	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC111	log     factor	50	0.00001	100	all_params	1	0
 gfEMC111	log     factor	50	0.00001	100	all_params	1	0
 goDWC111	log     factor	50	0.00001	100	all_params	1	0
@@ -158,7 +158,7 @@ oEMC111	log     factor	50	0.00001	100	all_params	1	0
 DRF105	log     factor	50	0.00001	100	all_params	1	0
 DRP105	log     factor	40	0.00001	100	all_params	1	0
 DWC105	log     factor	50	0.00001	100	all_params	1	0
-LCF105	log     factor	50	0.00001	100	all_params	1	0
+LCF105	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC105	log     factor	50	0.00001	100	all_params	1	0
 gfEMC105	log     factor	50	0.00001	100	all_params	1	0
 goDWC105	log     factor	50	0.00001	100	all_params	1	0
@@ -172,7 +172,7 @@ oEMC105	log     factor	50	0.00001	100	all_params	1	0
 DRF161	log     factor	50	0.00001	100	all_params	1	0
 DRP161	log     factor	40	0.00001	100	all_params	1	0
 DWC161	log     factor	50	0.00001	100	all_params	1	0
-LCF161	log     factor	50	0.00001	100	all_params	1	0
+LCF161	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC161	log     factor	50	0.00001	100	all_params	1	0
 gfEMC161	log     factor	50	0.00001	100	all_params	1	0
 goDWC161	log     factor	50	0.00001	100	all_params	1	0
@@ -186,7 +186,7 @@ oEMC161	log     factor	50	0.00001	100	all_params	1	0
 DRF104	log     factor	50	0.00001	100	all_params	1	0
 DRP104	log     factor	40	0.00001	100	all_params	1	0
 DWC104	log     factor	50	0.00001	100	all_params	1	0
-LCF104	log     factor	50	0.00001	100	all_params	1	0
+LCF104	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC104	log     factor	50	0.00001	100	all_params	1	0
 gfEMC104	log     factor	50	0.00001	100	all_params	1	0
 goDWC104	log     factor	50	0.00001	100	all_params	1	0
@@ -200,7 +200,7 @@ oEMC104	log     factor	50	0.00001	100	all_params	1	0
 DRF103	log     factor	50	0.00001	100	all_params	1	0
 DRP103	log     factor	40	0.00001	100	all_params	1	0
 DWC103	log     factor	50	0.00001	100	all_params	1	0
-LCF103	log     factor	50	0.00001	100	all_params	1	0
+LCF103	fixed     factor	100	0.00001	100	all_params	1	0
 gfDWC103	log     factor	50	0.00001	100	all_params	1	0
 gfEMC103	log     factor	50	0.00001	100	all_params	1	0
 goDWC103	log     factor	50	0.00001	100	all_params	1	0
