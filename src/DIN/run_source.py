@@ -4,10 +4,7 @@ Script used to run_source and return the output file.
 import veneer
 import numpy as np
 from veneer.pest_runtime import *
-from veneer.manage import start,kill_all_now
 import pandas as pd
-import time
-import os
 import spotpy as sp
 
 from modeling_funcs import change_param_values, modeling_settings
