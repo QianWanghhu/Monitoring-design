@@ -4,7 +4,10 @@ Script used to run_source and return the output file.
 import veneer
 import numpy as np
 from veneer.pest_runtime import *
+from veneer.manage import start,kill_all_now
 import pandas as pd
+import time
+import os
 import spotpy as sp
 
 from modeling_funcs import change_param_values, modeling_settings
@@ -52,7 +55,8 @@ for i,j in parameters.iterrows():
 NODEs, things_to_record, criteria, start_date, end_date = modeling_settings()
 vs.configure_recording(disable=[{}], enable=things_to_record)
 
-vs = change_param_values(vs, parameter_dict)
+subcatchments = [114, 106, 113, 107, 112, 108, 109, 157, 110, 111, 105, 161, 104, 103]
+vs = change_param_values(vs, parameter_dict, subcatchment=subcatchments)
 vs.drop_all_runs()
 vs.run_model(params={'NoHardCopyResults':True}, start = start_date, end = end_date) 
 
